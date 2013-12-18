@@ -5,3 +5,4 @@
 *.fls
 *.blg
 *.*latexmk
+!resources/*/*.pdf
