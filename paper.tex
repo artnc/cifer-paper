@@ -1,84 +1,90 @@
-\documentclass[letterpaper,12pt]{article}
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+% For more information, see /templates/bare_conf.tex.
+%
+\documentclass[conference, draftcls]{IEEEtran}
+% TODO Is this a compsoc conference?
+% Add the compsoc option for Computer Society conferences.
 
-\usepackage[table]{xcolor} % Must come before packages that load xcolor
-
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage{cite}
+\usepackage[pdftex]{graphicx}
+\graphicspath{{../pdf/}{../jpeg/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\usepackage[cmex10]{amsmath}
+\usepackage{algorithmic}
 \usepackage{array}
-\usepackage{booktabs}
-% \usepackage{capt-of}
-\usepackage{color}
-\usepackage{enumerate}
-\usepackage{graphics}
-\usepackage{graphicx}
-% \usepackage{listings}
-\usepackage{mdwlist}
-\usepackage{multicol}
-% \usepackage{pgfplots}
+\usepackage{mdwmath}
+\usepackage{mdwtab}
+\usepackage{eqparbox}
+\usepackage{url}
+\usepackage[tight,footnotesize]{subfigure}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{fixltx2e}
+\usepackage{stfloats}
 
-% TiKZ
-% \usepackage{tikz}
-% \usepackage{tikz-qtree}
-% \usepackage{tikz-dependency}
-% \usetikzlibrary{shapes}
-
-\usepackage[normalem]{ulem}
-\usepackage[margin=1in]{geometry}
-% \usepackage{hyperref} % Must be loaded last
-
-% Easily highlight answers in math/physics homework
-% \newcommand{\ans}[1]{\textcolor{blue}{#1}}
-
-% Paragraph formatting
-\setlength{\parskip}{1ex}
-% \setlength{\parindent}{0pt}\makeatletter
-
-% Letter subsections (instead of having 1.1, 1.2, etc)
-% \renewcommand{\thesubsection}{\Alph{subsection}.}
-
-% Hyperref settings
-% \hypersetup{
-%   colorlinks=true,
-%   linkcolor=black,
-%   urlcolor=blue
-% }
-
-% Listings settings (please customize yourself!)
-% \definecolor{commentcolor}{rgb}{0,0.6,0}
-% \definecolor{bgcolor}{rgb}{0.93,0.93,0.93}
-% \lstset{
-%   language=Python,
-%   basicstyle=\footnotesize\ttfamily,
-%   numbers=left,
-%   captionpos=b,
-%   frame=single,
-%   title=\lstname,
-%   tabsize=2,
-%   breaklines=true,
-%   breakatwhitespace=true,
-%   showstringspaces=false,
-%   aboveskip=18pt,
-%   belowskip=18pt,
-%   xleftmargin=17pt,
-%   backgroundcolor=\color{bgcolor},
-%   keywordstyle=\color{blue},
-%   commentstyle=\color{commentcolor},
-%   stringstyle=\color{magenta}
-% }
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
 
 \begin{document}
+\title{CIFEr Tournament}
 
-\title{\vspace{-0.5in}CIFEr Tournament}
-\author{Nachapon Arthur Chaidarun and Scott Tepsuporn}
-\renewcommand{\today}{December 1, 2013}
+\author{
+  \IEEEauthorblockN{Nachapon Arthur Chaidarun}
+  \IEEEauthorblockA{
+    College of Arts and Sciences\\
+    University of Virginia\\
+    Charlottesville, Virginia 22904\\
+    Email: chaidarun@virginia.edu
+  }
+  \and
+  \IEEEauthorblockN{Scott Tepsuporn}
+  \IEEEauthorblockA{
+    School of Engineering and \\ Applied Science \\
+    University of Virginia\\
+    Charlottesville, Virginia 22904\\
+    Email: spt9np@virginia.edu
+  }
+}
+
+% TODO Are we a special paper?
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+% make the title area
 \maketitle
-\thispagestyle{empty}
-\pagestyle{empty}
 
-% \begin{multicols}{2}
-\subsection*{Abstract}
+\begin{abstract}
+%\boldmath
+The abstract goes here.
+\end{abstract}
 
-% \end{multicols}
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+This is the intro \cite{IEEEhowto:IEEEtranpage}.
+
+\subsection{Subsection Heading Here}
+Subsection text here.
+
+\subsubsection{Subsubsection Heading Here}
+Subsubsection text here.
+
+\section{Conclusion}
+The conclusion goes here.
+
+\section*{Acknowledgment}
+The authors would like to thank...
+
+\bibliographystyle{IEEEtran}
+\bibliography{./resources/bibliography}
 
 \end{document}
