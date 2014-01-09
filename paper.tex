@@ -67,6 +67,15 @@ Rules and algorithms.
 \subsection{Implementation}
 How the website functions.
 
+\section{Price Series}
+The price series in the hedge tournament are based on an historical S&P 500 price series. The first step in estimating the price series is to estimate the Beta of each equity (stock) asset, the benchmark being the S&P 500. Beta measures the relation between S&P500 returns and that of a specific stock. Using the Beta a price series can be generated that closely follows the real price series. To increase the difficulty of the tournament a U(-2\%,2\%) was added to generate a layer of noise. The noise adds a layer of randomness to the price series, as well as obscuring the historical time period.
+
+Generating the option prices seen in the tournament require several additional steps. Firstly, the historical volatility for each stock was found. Volatility was measured as the standard deviation of log returns.  Additionally, an expiration date of the options needed to be selected. To limit the difficulty of the tournament the expiration date was chosen to outside the competition time window. This means teams did not have to worry about exercising the options. Furthermore, stocks were assumed not to pay a dividend, as this increase the difficulty of constructing an appropriate portfolio. It should be noted, that during the tournament time real world stocks did not pay dividends and therefore the authors’ contend this assumption is acceptable. The last assumptions the authors’ made was all options are European styled options. This means that the options cannot be exercised prior to the expiration date. Again this was to limit the difficulty in the tournament, allowing it to be accessible to people of different skill levels.
+
+Using the simulated price series of each stock and the Black-Scholes formula a simulated option price series was generated. Similar to the stock price series a U(-2\%,2\%) was added to generate a layer of noise. Five puts and five call options were calculated for each stock. All options are originally created in the money. However, as the tournament progress the option may become worthless. The strike price of the options increment by \$0.50 or \$1.00, depending on if the underlying stock value started below or above \$15 respectively. The next section describes briefly several strategies that can be used to hedge such a portfolio.
+
+\section{Hedging Strategies}
+
 \section{Results}
 Depends on the number of participants and the deadline of this paper...
 
