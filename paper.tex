@@ -63,20 +63,42 @@ Like many strategies used in the financial industry, hedging techniques remain t
 Many solutions exist to provide a way for traders to practice stock trading; however the goal of these simulations such as \cite{wallstreetsurvivor} is normally to make the most money. This does not turn out to be a sufficient metric for hedge fund performance since a degree of luck may have been involved. What is needed instead is a way to measure risk and returns simultaneously. Our tournament will take this into account and provide a way for a wider audience to try their hand at managing a hedge fund. Furthermore, it will enable users to try different techniques and possibly publish their findings.
 
 \section{Hedge Fund Tournament}
-Describes the tournament.
+\subsection{Description}
+Teams of any number of people may participate in this hedge fund tournament. Each team is given a basket of stocks and options, which must be held for the full duration of the tournament. Teams are also provided cash used to hedge their positions. Their initial total portfolio value is worth \$53724780.00. Teams must take offsetting positions to limit the volatility of their overall portfolio. 
 
-\subsection{Player Rules}
-Rules and algorithms.
+Every 24 hours is equivalent to a simulated day, with a bid and ask price being presented for
+each asset. At the beginning of every day, the tracking error $TE$ is calculated for each team to measure how close the team is able to follow a 1\% annualized return. We define the tracking error as
+\begin{equation}
+  TE_t = 
+  \begin{cases}
+    \frac{PV_t - T_t}{2}  & \text{if } PV_t \geq T_t \\
+    T_t - PV_t            & \text{else}
+  \end{cases}
+\end{equation}
+where $PV$ is the team's portfolio value and $T$ is the target value, equal to the team's initial portfolio value plus a 1\% annualized return to date. To minimize tracking errors, teams must enter long or short positions in stocks or options to offset the illiquid position.
+The following restrictions limit the ability to enter such positions.
+\begin{itemize}
+  \item The value of the margin account must not exceed \$22 million.
+  \item Teams must have at least 30\% of the margin account value in cash at all times.
+  \item Teams may not trade any asset more than once a day.
+  \item For a trade to be initiated, the required amount of cash must be present in the portfolio.
+  \item Teams may not trade any asset that has a value of zero dollars.
+  \item Teams cannot trade assets in their initial portfolio.
+  \item Teams may switch from short to long in the same day, but not long to short.
+  \item Trades are limited to assets derived from thirty stocks: AA, AAPL, ABX, AU, BAC, BBT, BP,C, CISCO, CVX,
+DUK, ED, EXC FCX, GOOG, IBM, JPM, MSFT, NEE, POT, PXD, RF, RIG, SBS, SLB, SO, VALE, WFC, XOM, and YHOO.
+\end{itemize}
+Finally, the team with the lowest cumulative tracking error is crowned winner.
 
-\subsection{Implementation}
-How the website functions.
-
-\section{Price Series}
+\subsection{Price Series}
 The price series in the hedge tournament are based on an historical S&P 500 price series. The first step in estimating the price series is to estimate the Beta of each equity (stock) asset, the benchmark being the S&P 500. Beta measures the relation between S&P500 returns and that of a specific stock. Using the Beta a price series can be generated that closely follows the real price series. To increase the difficulty of the tournament a U(-2\%,2\%) was added to generate a layer of noise. The noise adds a layer of randomness to the price series, as well as obscuring the historical time period.
 
 Generating the option prices seen in the tournament require several additional steps. Firstly, the historical volatility for each stock was found. Volatility was measured as the standard deviation of log returns.  Additionally, an expiration date of the options needed to be selected. To limit the difficulty of the tournament the expiration date was chosen to outside the competition time window. This means teams did not have to worry about exercising the options. Furthermore, stocks were assumed not to pay a dividend, as this increase the difficulty of constructing an appropriate portfolio. It should be noted, that during the tournament time real world stocks did not pay dividends and therefore the authors’ contend this assumption is acceptable. The last assumptions the authors’ made was all options are European styled options. This means that the options cannot be exercised prior to the expiration date. Again this was to limit the difficulty in the tournament, allowing it to be accessible to people of different skill levels.
 
 Using the simulated price series of each stock and the Black-Scholes formula a simulated option price series was generated. Similar to the stock price series a U(-2\%,2\%) was added to generate a layer of noise. Five puts and five call options were calculated for each stock. All options are originally created in the money. However, as the tournament progress the option may become worthless. The strike price of the options increment by \$0.50 or \$1.00, depending on if the underlying stock value started below or above \$15 respectively. The next section describes briefly several strategies that can be used to hedge such a portfolio.
+
+\subsection{Implementation}
+How the website functions.
 
 \section{Hedging Strategies}
 
