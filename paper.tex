@@ -98,8 +98,9 @@ Generating the option prices seen in the tournament require several additional s
 Using the simulated price series of each stock and the Black-Scholes formula a simulated option price series was generated. Similar to the stock price series a U(-2\%,2\%) was added to generate a layer of noise. Five puts and five call options were calculated for each stock. All options are originally created in the money. However, as the tournament progress the option may become worthless. The strike price of the options increment by \$0.50 or \$1.00, depending on if the underlying stock value started below or above \$15 respectively. The next section describes briefly several strategies that can be used to hedge such a portfolio.
 
 \subsection{Implementation}
-How the website functions.
+Because of the relatively small scale of the application, we have decided to use a relatively small web framework. We required a framework that has a small footprint, that is flexible, and that is extensible -- and have found flask to meet these needs. 
 
+The web interface is simple and only has two pages, one for login \/ registration and the main page where teams can see the current stock prices and make trades. The main page also displays the team’s tracking error history as a graph using the gRaphel javascript library. This allows for teams to keep track of their performance as the tournament progresses. 
 \section{Hedging Strategies}
 
 \section{Results}
